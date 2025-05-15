@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+    --background: #f1f1f1;
+    --core: #ffff;
+    --primary: #D32D41;
+    --secondary: #000000;
+    --hyperlinkx: #0091D5;
+    --accent: #f8f8f8;
+    --outline: #c9c9c9;
+
+    --Poppins: 'Poppins';
+    --Roboto: 'Roboto';
+}
+
+body{
+    background-color: var(--background);
+    color: var(--primary);
+    margin: 5px;
+}
+
+p{
+    font-family: var(--Poppins);
+}
+h1,h2,h3,h4,h5{
+    font-family: var(--Roboto);
+}
+
+.core{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 0 0 10px 10px;
+    margin: 5px 5px;
+    background-color: var(--core);
+}
+
+.banner{
+    background-image: url("../img/banner-long.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 175px;
+    object-fit: fill;
+    width: 100%;
+    margin: 0px;
+}
+
+.navbar{
+    padding: 0 20px 0 20px;
+    color: var(--secondary);
+    font-family: var(--Poppins);
+    background-color: var(--accent);
+    border: 1px solid var(--outline);
+}
+.navbar-brand{
+    font-weight: bold;
+}
+.navbar-nav li{
+    margin: 0 5px 0 5px;
+    padding: 0 5px 0 5px;
+    /* border: var(--background) 2px solid; */
+    border-radius: 5px;
+}
+.navbar-nav li a{
+    color: var(--secondary);
+}
+
+/* Statistics */
+/* Brand */
+.stats-brand{ 
+    color: var(--primary);
+    font-family: var(--Poppins);
+    font-weight: 900;
+}
+.stats-brand h3{
+    font-weight: bolder;
+    margin: 20px;
+} 
+/* Counter */
+.counter{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border: var(--outline) solid 1px;
+    border-radius: 25px;
+    padding: 5px 5px;
+}
+.counter p{
+    text-align: left;
+    color: var(--primary);
+    margin: 0;
+}
+.counter h1{
+    text-align: center;
+    color: var(--primary);
+    font-weight: bolder;
+}
+
+/* Graphs */
+.graph-box{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border: var(--outline) solid 1px;
+    border-radius: 25px;
+    padding: 5px;
+}
+
+/* Footer */
+footer{
+    background-color: var(--primary);
+    font-family: var(--Poppins);
+    color: var(--core);
+}
+footer *{
+    margin: 10px 0 0 0;
+}
+footer a{
+    color: var(--background);
+    text-decoration: none;
+}
