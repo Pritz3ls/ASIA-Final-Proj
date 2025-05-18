@@ -1,0 +1,551 @@
+// Students API
+# Get All Students Data
+- http://localhost:3000/api/students/
+Sample:[
+    {
+        "student_id": 1,
+        "first_name": "Sarah",
+        "last_name": "Farmer",
+        "course_id": 1,
+        "date_of_birth": "2006-05-24T16:00:00.000Z",
+        "email": "sarah.farmer0@example.com"
+    },
+    {
+        "student_id": 2,
+        "first_name": "Jeffrey",
+        "last_name": "Stephens",
+        "course_id": 1,
+        "date_of_birth": "2006-02-15T16:00:00.000Z",
+        "email": "jeffrey.stephens1@example.com"
+    },
+    {
+        "student_id": 3,
+        "first_name": "Courtney",
+        "last_name": "Hanson",
+        "course_id": 2,
+        "date_of_birth": "2004-05-15T16:00:00.000Z",
+        "email": "courtney.hanson2@example.com"
+    },
+    {
+        "student_id": 4,
+        "first_name": "Diamond",
+        "last_name": "Ingram",
+        "course_id": 2,
+        "date_of_birth": "2003-01-07T16:00:00.000Z",
+        "email": "diamond.ingram3@example.com"
+    },
+    {
+        "student_id": 5,
+        "first_name": "Jonathan",
+        "last_name": "Moore",
+        "course_id": 2,
+        "date_of_birth": "2002-05-15T16:00:00.000Z",
+        "email": "jonathan.moore4@example.com"
+    },
+]
+
+# Get Total Counts of All Students
+http://localhost:3000/api/students/count
+Sample: [
+    {
+        "total": 500
+    }
+]
+
+# Get a Specific Student using ID
+http://localhost:3000/api/students/? ## the symbol ? is where you will specify the ID
+Sample: {
+    "student_id": 1,
+    "first_name": "Sarah",
+    "last_name": "Farmer",
+    "course_id": 1,
+    "date_of_birth": "2006-05-24T16:00:00.000Z",
+    "email": "sarah.farmer0@example.com"
+}
+
+// Subject API
+# Get All Subjects Data
+http://localhost:3000/api/subjects/
+Sample: [
+    {
+        "subject_id": 1,
+        "subject_name": "Mathematics",
+        "subject_code": "MATH101"
+    },
+    {
+        "subject_id": 2,
+        "subject_name": "English",
+        "subject_code": "ENG101"
+    },
+    {
+        "subject_id": 3,
+        "subject_name": "Science",
+        "subject_code": "SCI101"
+    },
+    {
+        "subject_id": 4,
+        "subject_name": "Filipino",
+        "subject_code": "FIL101"
+    },
+    {
+        "subject_id": 5,
+        "subject_name": "History",
+        "subject_code": "HIST101"
+    },
+    {
+        "subject_id": 6,
+        "subject_name": "Computer",
+        "subject_code": "COMP101"
+    },
+    {
+        "subject_id": 7,
+        "subject_name": "PE",
+        "subject_code": "PE101"
+    },
+    {
+        "subject_id": 8,
+        "subject_name": "Values Education",
+        "subject_code": "VE101"
+    }
+]
+
+// Student Subjects API
+# Get All Student Subjects Data
+http://localhost:3000/api/studentsSubjects/
+Sample: [
+    {
+        "student_id": 1,
+        "subject_id": 1,
+        "semester": "1st Semester",
+        "year_level": 3
+    },
+    {
+        "student_id": 1,
+        "subject_id": 2,
+        "semester": "1st Semester",
+        "year_level": 3
+    },
+    {
+        "student_id": 1,
+        "subject_id": 3,
+        "semester": "1st Semester",
+        "year_level": 3
+    },
+    {
+        "student_id": 1,
+        "subject_id": 4,
+        "semester": "1st Semester",
+        "year_level": 3
+    },
+    {
+        "student_id": 1,
+        "subject_id": 5,
+        "semester": "1st Semester",
+        "year_level": 3
+    },
+    {
+        "student_id": 1,
+        "subject_id": 6,
+        "semester": "1st Semester",
+        "year_level": 3
+    }
+]
+
+// Course API
+# Get All Courses Data
+http://localhost:3000/api/course/
+Sample: [
+    {
+        "course_id": 1,
+        "course_name": "Information Technology"
+    },
+    {
+        "course_id": 2,
+        "course_name": "Computer Science"
+    },
+    {
+        "course_id": 3,
+        "course_name": "Business Administration"
+    }
+]
+
+# Get Courses Data by ID
+http://localhost:3000/api/course/?/ ## the symbol ? is where you will specify the ID
+Sample: [
+    {
+        "course_id": 1,
+        "course_name": "Information Technology"
+    }
+]
+
+# Get Total Students Count from a specific Course by ID
+http://localhost:3000/api/course/students/?/ ## the symbol ? is where you will specify the ID
+Sample: [
+    {
+        "course_total_students": 150,
+        "course_id": 1,
+        "course_name": "Information Technology"
+    }
+]
+
+# Get Students Data from a specific Course by ID
+http://localhost:3000/api/course/students/?/detailed ## the symbol ? is where you will specify the ID
+Sample: [
+    {
+        "student_id": 1,
+        "first_name": "Sarah",
+        "last_name": "Farmer",
+        "course_id": 1,
+        "date_of_birth": "2006-05-24T16:00:00.000Z",
+        "email": "sarah.farmer0@example.com",
+        "course_name": "Information Technology"
+    },
+    {
+        "student_id": 2,
+        "first_name": "Jeffrey",
+        "last_name": "Stephens",
+        "course_id": 1,
+        "date_of_birth": "2006-02-15T16:00:00.000Z",
+        "email": "jeffrey.stephens1@example.com",
+        "course_name": "Information Technology"
+    },
+    {
+        "student_id": 9,
+        "first_name": "Jason",
+        "last_name": "Gallagher",
+        "course_id": 1,
+        "date_of_birth": "2002-11-07T16:00:00.000Z",
+        "email": "jason.gallagher8@example.com",
+        "course_name": "Information Technology"
+    },
+    {
+        "student_id": 12,
+        "first_name": "Robert",
+        "last_name": "Sullivan",
+        "course_id": 1,
+        "date_of_birth": "1999-12-21T16:00:00.000Z",
+        "email": "robert.sullivan11@example.com",
+        "course_name": "Information Technology"
+    },
+    {
+        "student_id": 15,
+        "first_name": "Dana",
+        "last_name": "Herrera",
+        "course_id": 1,
+        "date_of_birth": "2002-01-24T16:00:00.000Z",
+        "email": "dana.herrera14@example.com",
+        "course_name": "Information Technology"
+    },
+    {
+        "student_id": 17,
+        "first_name": "Meagan",
+        "last_name": "Wilson",
+        "course_id": 1,
+        "date_of_birth": "2007-05-07T16:00:00.000Z",
+        "email": "meagan.wilson16@example.com",
+        "course_name": "Information Technology"
+    },
+    {
+        "student_id": 21,
+        "first_name": "Luis",
+        "last_name": "Walker",
+        "course_id": 1,
+        "date_of_birth": "2002-05-11T16:00:00.000Z",
+        "email": "luis.walker20@example.com",
+        "course_name": "Information Technology"
+    }
+]
+
+# Get All Total Students Count each Course
+http://localhost:3000/api/course/total/students
+Sample: [
+    {
+        "course_total_students": 150,
+        "course_name": "Information Technology",
+        "course_id": 1
+    },
+    {
+        "course_total_students": 169,
+        "course_name": "Computer Science",
+        "course_id": 2
+    },
+    {
+        "course_total_students": 181,
+        "course_name": "Business Administration",
+        "course_id": 3
+    }
+]
+
+# Get Course Grade Average on each subjects 
+http://localhost:3000/api/course/total/avg
+Sample: [
+    {
+        "course_name": "Business Administration",
+        "subject_name": "Computer",
+        "avg_grade": "88.16"
+    },
+    {
+        "course_name": "Business Administration",
+        "subject_name": "English",
+        "avg_grade": "87.03"
+    },
+    {
+        "course_name": "Business Administration",
+        "subject_name": "Filipino",
+        "avg_grade": "87.32"
+    },
+    {
+        "course_name": "Business Administration",
+        "subject_name": "History",
+        "avg_grade": "87.87"
+    },
+    {
+        "course_name": "Business Administration",
+        "subject_name": "Mathematics",
+        "avg_grade": "87.04"
+    },
+    {
+        "course_name": "Business Administration",
+        "subject_name": "PE",
+        "avg_grade": "88.02"
+    },
+    {
+        "course_name": "Business Administration",
+        "subject_name": "Science",
+        "avg_grade": "88.13"
+    },
+    {
+        "course_name": "Business Administration",
+        "subject_name": "Values Education",
+        "avg_grade": "87.97"
+    }
+]
+
+// Student Grades
+# Get All Student Grades
+http://localhost:3000/api/studentsGrades/
+Sample: [
+    {
+        "student_id": 1,
+        "subject_id": 1,
+        "grade": "86.73",
+        "grading_period": "Final",
+        "remarks": "Passed"
+    },
+    {
+        "student_id": 1,
+        "subject_id": 1,
+        "grade": "93.55",
+        "grading_period": "Midterm",
+        "remarks": "Passed"
+    },
+    {
+        "student_id": 1,
+        "subject_id": 2,
+        "grade": "77.65",
+        "grading_period": "Final",
+        "remarks": "Passed"
+    },
+    {
+        "student_id": 1,
+        "subject_id": 2,
+        "grade": "88.70",
+        "grading_period": "Midterm",
+        "remarks": "Passed"
+    },
+    {
+        "student_id": 1,
+        "subject_id": 3,
+        "grade": "96.27",
+        "grading_period": "Final",
+        "remarks": "Passed"
+    },
+    {
+        "student_id": 1,
+        "subject_id": 3,
+        "grade": "75.54",
+        "grading_period": "Midterm",
+        "remarks": "Failed"
+    },
+    {
+        "student_id": 1,
+        "subject_id": 4,
+        "grade": "88.35",
+        "grading_period": "Final",
+        "remarks": "Passed"
+    },
+    {
+        "student_id": 1,
+        "subject_id": 4,
+        "grade": "86.42",
+        "grading_period": "Midterm",
+        "remarks": "Passed"
+    }
+]
+
+# Get Total Student Grades Count
+http://localhost:3000/api/studentsGrades/count/
+Sample: [
+    {
+        "COUNT(*)": 8000
+    }
+]
+
+# Get Total Students who passed on subjects
+http://localhost:3000/api/studentsGrades/count/passed
+Sample: [
+    {
+        "total": 7672
+    }
+]
+
+# Get Total Students who failed on subjects
+http://localhost:3000/api/studentsGrades/count/failed
+Sample: [
+    {
+        "total": 328
+    }
+]
+
+# Get the Passing Rate
+http://localhost:3000/api/studentsGrades/percentage
+Sample: [
+    {
+        "percentage": "95.90"
+    }
+]
+
+# Get the Average grade of each students per subjects
+http://localhost:3000/api/studentsGrades/avg/grade
+Sample: [
+    {
+        "student_id": 1,
+        "subject_id": 1,
+        "final_grade": "90.140000"
+    },
+    {
+        "student_id": 1,
+        "subject_id": 2,
+        "final_grade": "83.175000"
+    },
+    {
+        "student_id": 1,
+        "subject_id": 3,
+        "final_grade": "85.905000"
+    },
+    {
+        "student_id": 1,
+        "subject_id": 4,
+        "final_grade": "87.385000"
+    },
+    {
+        "student_id": 1,
+        "subject_id": 5,
+        "final_grade": "81.145000"
+    },
+    {
+        "student_id": 1,
+        "subject_id": 6,
+        "final_grade": "85.230000"
+    },
+    {
+        "student_id": 1,
+        "subject_id": 7,
+        "final_grade": "81.545000"
+    },
+    {
+        "student_id": 1,
+        "subject_id": 8,
+        "final_grade": "81.805000"
+    }
+]
+
+# Get the Overall Grades from all students grades
+http://localhost:3000/api/studentsGrades/avg/overall
+Sample: [
+    {
+        "overall_grade_average": "87.53"
+    }
+]
+
+# Get the Average Grades each subjects
+http://localhost:3000/api/studentsgrades/avg/subject
+Sample: [
+    {
+        "subject_id": 1,
+        "subject_name": "Mathematics",
+        "subject_code": "MATH101",
+        "average_grade_subject": "87.28"
+    },
+    {
+        "subject_id": 2,
+        "subject_name": "English",
+        "subject_code": "ENG101",
+        "average_grade_subject": "87.30"
+    },
+    {
+        "subject_id": 3,
+        "subject_name": "Science",
+        "subject_code": "SCI101",
+        "average_grade_subject": "87.70"
+    },
+    {
+        "subject_id": 4,
+        "subject_name": "Filipino",
+        "subject_code": "FIL101",
+        "average_grade_subject": "87.53"
+    },
+    {
+        "subject_id": 5,
+        "subject_name": "History",
+        "subject_code": "HIST101",
+        "average_grade_subject": "87.46"
+    },
+    {
+        "subject_id": 6,
+        "subject_name": "Computer",
+        "subject_code": "COMP101",
+        "average_grade_subject": "87.50"
+    },
+    {
+        "subject_id": 7,
+        "subject_name": "PE",
+        "subject_code": "PE101",
+        "average_grade_subject": "87.67"
+    },
+    {
+        "subject_id": 8,
+        "subject_name": "Values Education",
+        "subject_code": "VE101",
+        "average_grade_subject": "87.83"
+    }
+]
+
+# Get the Grade Distribution
+http://localhost:3000/api/studentsgrades/distribution
+Sample: [
+    {
+        "grade_range": "75-79",
+        "count": 1272
+    },
+    {
+        "grade_range": "80-84",
+        "count": 1247
+    },
+    {
+        "grade_range": "85-89",
+        "count": 1286
+    },
+    {
+        "grade_range": "90-94",
+        "count": 1294
+    },
+    {
+        "grade_range": "95-100",
+        "count": 1643
+    },
+    {
+        "grade_range": "Below 75",
+        "count": 1258
+    }
+]
