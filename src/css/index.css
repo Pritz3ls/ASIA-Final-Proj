@@ -49,7 +49,9 @@ h1,h2,h3,h4,h5{
     color: var(--secondary);
     font-family: var(--Poppins);
     background-color: var(--accent);
-    border: 1px solid var(--outline);
+
+    border-bottom: 1px solid var(--outline);
+    border-top: 1px solid var(--outline);
 }
 .navbar-brand{
     font-weight: bold;
@@ -80,23 +82,30 @@ h1,h2,h3,h4,h5{
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border: var(--outline) solid 1px;
     border-radius: 25px;
-    padding: 5px 5px;
+    padding: 2.5px 1px;
+    margin: 2px;
 }
 .counter p{
     text-align: left;
     color: var(--primary);
     margin: 0;
+    font-size: 1rem;
+    line-height: 1.2;
+    /* white-space: nowrap; */
 }
 .counter h1{
     text-align: center;
     color: var(--primary);
     font-weight: bolder;
+    font-size: 2rem;
+    line-height: 1.1;
 }
 
 /* Graphs */
 .graph-box{
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border: var(--outline) solid 1px;
+    margin: 2px;
     border-radius: 25px;
     padding: 5px;
 }
@@ -106,6 +115,7 @@ footer{
     background-color: var(--primary);
     font-family: var(--Poppins);
     color: var(--core);
+    border-radius: 0 0 5px 5px;
 }
 footer *{
     margin: 10px 0 0 0;

@@ -1,110 +1,167 @@
-// Database API
-
-// LineChart
-new Chart(document.getElementById("linechart"), {
-  type: 'line',
-  data: {
-    labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
-    datasets: [{ 
-        data: [86,114,106,106,107,111,133,221,783,2478],
-        label: "Africa",
-        borderColor: "#3e95cd",
-        fill: true
-      }, { 
-        data: [282,350,411,502,635,809,947,1402,3700,5267],
-        label: "Asia",
-        borderColor: "#8e5ea2",
-        fill: true
-      }, { 
-        data: [168,170,178,190,203,276,408,547,675,734],
-        label: "Europe",
-        borderColor: "#3cba9f",
-        fill: true
-      }, { 
-        data: [40,20,10,16,24,38,74,167,508,784],
-        label: "Latin America",
-        borderColor: "#e8c3b9",
-        fill: true
-      }, { 
-        data: [6,3,2,2,7,26,82,172,312,433],
-        label: "North America",
-        borderColor: "#c45850",
-        fill: true
+// Charts Script
+// BarChart
+fetch('http://localhost:3000/api/studentsgrades/distribution')
+.then(res => res.json())
+.then(data => {
+  const labels = data.map(item => item.grade_range);
+  const counts = data.map(item => item.count);
+  
+  new Chart(document.getElementById('barchart'), {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Number of Students',
+        data: counts,
+        backgroundColor: 'rgba(54, 162, 235, 0.7)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Student Count'
+          }
+        },
+        x: {
+          title: {
+            display: true,
+            text: 'Grade Ranges'
+          }
+        }
+      },
+      plugins: {
+        title: {
+          display: true,
+          text: 'Grade Distribution of Students'
+        }
       }
-    ]
-  },
-  options: {
-    title: {
-      display: true,
-      text: 'World population per region (in millions)'
     }
-  }
-});
+  });
+}).catch(err => console.error('Failed loading chart data:', err));
 
 // RadarChart
-new Chart(document.getElementById("radarchart"), {
+fetch('http://localhost:3000/api/course/total/avg')
+.then(res => res.json())
+.then(data => {
+  // Let's say your data looks like this:
+  // [{ course_name: 'CS', subject_name: 'Math', avg_grade: 89.5 }, {...}]
+
+  // Extract unique labels - subjects
+  const labels = [...new Set(data.map(item => item.subject_name))];
+
+  // Extract unique courses for datasets
+  const courses = [...new Set(data.map(item => item.course_name))];
+
+  // Create datasets - one per course
+  const datasets = courses.map(course => {
+    // Random color helper function
+    const randomColor = () => {
+      const r = Math.floor(Math.random() * 255);
+      const g = Math.floor(Math.random() * 255);
+      const b = Math.floor(Math.random() * 255);
+      return `rgba(${r},${g},${b},0.5)`;
+    };
+
+    // Build data array: avg grade per subject for this course
+    const dataPoints = labels.map(subject => {
+      const record = data.find(d => d.course_name === course && d.subject_name === subject);
+      return record ? record.avg_grade : 0;
+    });
+
+    const color = randomColor();
+
+    return {
+      label: course,
+      data: dataPoints,
+      fill: true,
+      backgroundColor: color,
+      borderColor: color.replace('0.5', '1'),
+      pointBackgroundColor: color.replace('0.5', '1'),
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: color.replace('0.5', '1')
+    };
+  });
+
+  // Create the radar chart
+  new Chart(document.getElementById("radarchart"), {
     type: 'radar',
     data: {
-      labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
-      datasets: [
-        {
-          label: "1950",
-          fill: true,
-          backgroundColor: "rgba(179,181,198,0.2)",
-          borderColor: "rgba(179,181,198,1)",
-          pointBorderColor: "#fff",
-          pointBackgroundColor: "rgba(179,181,198,1)",
-          data: [8.77,55.61,21.69,6.62,6.82]
-        }, {
-          label: "2050",
-          fill: true,
-          backgroundColor: "rgba(255,99,132,0.2)",
-          borderColor: "rgba(255,99,132,1)",
-          pointBorderColor: "#fff",
-          pointBackgroundColor: "rgba(255,99,132,1)",
-          pointBorderColor: "#fff",
-          data: [25.48,54.16,7.61,8.06,4.45]
-        }
-      ]
+      labels: labels,
+      datasets: datasets
     },
     options: {
-      title: {
-        display: true,
-        text: 'Distribution in % of world population'
+      responsive: true,
+      plugins: {
+        title: {
+          display: true,
+          text: 'Average Grades per Course Across Subjects'
+        }
+      },
+      scales: {
+        r: {
+          suggestedMin: 75,
+          suggestedMax: 100,
+          ticks: {
+            stepSize: 5
+          }
+        }
       }
     }
-});
+  });
+})
+.catch(err => console.error('Failed loading chart data:', err));
 
+// Dough Chart
+fetch('http://localhost:3000/api/studentsgrades/avg/subject')
+.then(res => res.json())
+.then(data => {
+  const data_subject_names = data.map(item => item.subject_name);
+  const data_subject_codes = data.map(item => item.course_total_students);
+  const data_average_grades = data.map(item => item.average_grade_subject);
 
-// Pie Chart
-new Chart(document.getElementById("doughchart"), {
+  new Chart(document.getElementById("doughchart"), {
     type: 'doughnut',
     data: {
-      labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+      labels: data_subject_names,
       datasets: [
         {
-          label: "Population (millions)",
-          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-          data: [2478,5267,734,784,433]
+          label: 'Average Grade',
+          backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+          data: data_average_grades
         }
       ]
     },
     options: {
       title: {
         display: true,
-        text: 'Predicted world population (millions) in 2050'
+        text: 'Average Grade per Subject'
       }
     }
-});
+  });
+}).catch(err => console.error('Failed loading chart data:', err));
 
-new Chart(document.getElementById("piechart"), {
+// Pie Chart
+fetch('http://localhost:3000/api/course/total/students')
+.then(res => res.json())
+.then(data => {
+  const data_labels = data.map(item => item.course_name);
+  const data_count = data.map(item => item.course_total_students);
+
+  new Chart(document.getElementById("piechart"), {
     type: 'pie',
     data: {
-      labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+      labels: data_labels,
       datasets: [{
-        label: "Population (millions)",
-        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-        data: [2478,5267,734,784,433]
+        label: "Enrolled Students",
+        backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+        data: data_count
       }]
     },
     options: {
@@ -113,5 +170,5 @@ new Chart(document.getElementById("piechart"), {
         text: 'Predicted world population (millions) in 2050'
       }
     }
-});
-
+  });
+}).catch(err => console.error('Failed loading chart data:', err));
